@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@300;400;700&display=swap');
+ $gray: #303633;
+ $lightGray: #f2f2f2;
+ $green: #8bebcd;
+ $pink: #9c7a97;
+ $headings: 'Source Sans Pro', sans-serif;
+ $text: 'Lato', sans-serif;
+ $transition: .3s ease;
+ $font: 16px;
+ $white: #fff;
+ /************
+ mixins
+ *************/
+ @mixin btn {
+	 border: 2px solid $green;
+	 padding: 10px 40px;
+	 font-size: 1rem;
+	 border-radius: 8px;
+	 background: transparent;
+	 color: $green;
+	 cursor: pointer;
+	 margin-top: 30px;
+	 &:hover {
+		 border: 2px solid $pink;
+		 color: $pink;
+		 transition: $transition;
+	 }
+ }
+ @mixin line {
+	 display: block;
+	 content: "";
+	 height: 2px;
+	 width: 100%;
+	 background: $lightGray;
+	 margin: 35px 0;
+
+ }
+ /************
+ basic styles
+ *************/
+ * {
+	 padding: 0;
+	 margin: 0;
+	 box-sizing: border-box;
+ } 
+ body {
+	 font-family: $text;
+	 font-size: $font;
+	 color: $gray;
+	 line-height: 1.6;
+	 display: flex; 
+	 flex-wrap: wrap;
+ }
+ h1,h2,h3,h4,h5,h6 {
+	 font-family: $headings;
+ }
+ h2 {
+	 font-size: 2.5rem;
+	 font-weight: 700;
+	 &::after {
+		display: block;
+		content: "";
+		height: 2px;
+		width: 100px;
+		background: $pink;
+		margin: 20px 0;
+	 }
+ }
+ ul {
+	 list-style: none;
+ }
+/************
+aside
+ *************/
+ aside {
+	flex: 1;
+	background-image: linear-gradient(rgba($pink, .9), rgba($pink, .9)), url(img/bg.jpg);
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	text-align: right;
+	padding-right: 60px;
+	@media (max-width: 768px) {
+		flex: 0 0 100%;
+		align-items: center;
+		padding-right: 0;
+		text-align: center;
+		height: 80vh;
+	}
+	img {
+		width: 40%;
+		border-radius: 50%;
+		border: 5px solid $pink;
+	}
+	h1 {
+		font-weight: 300;
+		color: $white;
+		padding: 30px 0;
+		span {
+			color: $green;
+			font-weight: 700;
+			font-style: italic;
+			letter-spacing: 2px;
+		}
+	}
+	a {
+		color: $green;
+		margin-left: 20px;
+		font-size: 2rem;
+		&:hover {
+			color: $white;
+			transition: $transition;
+		}
+	}
+}
+/************
+main
+ *************/
+ .main {
+	flex: 2;
+	padding: 40px; 
+	overflow: scroll;
+	height: 100vh;
+	@media(max-width: 768px) {
+		flex: 0 0 100%;
+		height: auto;
+	}
+	.about {
+		button {
+			@include btn;
+		}
+		&::after {
+			@include line;
+		}
+	}
+	.portfolio {
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-top: 40px;
+			.col {
+				flex: 0 0 48%;
+				@media (max-width: 768px) {
+					flex: 0 0 100%;
+				}
+				img {
+					width: 100%;
+					&:hover {
+						opacity: .6;
+						transition: $transition;
+						transform: scale(1.1);
+					}
+				}
+				h4 {
+					font-size: 2rem;
+					color: $pink;
+					padding: 20px 0;
+				}
+				p {
+					padding-bottom: 30px;
+				}
+			}
+		}
+		button {
+			@include btn;
+		}
+		&::after {
+			@include line;
+		}
+	}
+	footer {
+		padding-bottom: 50px;
+		.row {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 40px;
+			flex-wrap: wrap;
+			form {
+				flex: 0 0 68%;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				@media(max-width: 768px) {
+					flex: 0 0 100%;
+					
+				}
+				input {
+					flex: 0 0 48%;
+					padding: 10px;
+					background: $lightGray;
+					border: none;
+					margin-bottom: 30px;
+				}
+				textarea {
+					flex: 0 0 100%;
+					padding: 10px;background: $lightGray;
+					border: none;
+				}
+				button {
+					@include btn;
+						background: $pink;
+						border: 2px solid $pink;
+						color: $white;
+					&:hover {
+						background: $green;
+						border: 2px solid $green;
+						color: $white;
+					}
+				}
+			}
+			.contact {
+				flex: 0 0 28%;
+				@media(max-width: 768px) {
+					flex: 0 0 100%;
+					margin-top: 50px;
+				}
+				li {
+					line-height: 2.5;
+					font-size: 1.2rem;
+					i {
+						color: $pink;
+					}
+				}
+			}
+		}
+	}
+}
